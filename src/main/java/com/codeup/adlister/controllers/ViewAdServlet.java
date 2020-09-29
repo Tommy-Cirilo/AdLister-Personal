@@ -16,18 +16,18 @@ public class ViewAdServlet extends HttpServlet {
         String title = request.getParameter("title");
         long id =Long.parseLong(request.getParameter("id"));
         List<Ad> allAds = DaoFactory.getAdsDao().all();
-        Long seller = null;
+        String User = null;
         for (Ad ad : allAds) {
             if (ad.getId() == id && ad.getTitle().equals(title)) {
                 request.getSession().setAttribute("id", ad.getId());
                 request.getSession().setAttribute("user_id", ad.getUserId());
                 request.getSession().setAttribute("title", ad.getTitle());
                 request.getSession().setAttribute("description", ad.getDescription());
-                seller = ad.getUserId();
+                User = String.valueOf(ad.getUserId());
             }
         }
-//        User user = DaoFactory.getUsersDao().idFinder(seller);
-//        request.getSession().setAttribute("username", user.getUsername());
+        User user = DaoFactory.getUsersDao().findByUsername(User);
+        request.getSession().setAttribute("username", user.getUsername());
 
         request.getRequestDispatcher("/WEB-INF/ads/view.jsp").forward(request, response);
     }
