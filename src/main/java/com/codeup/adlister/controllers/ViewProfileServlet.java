@@ -14,8 +14,9 @@ import java.io.IOException;
 @WebServlet(name = "controllers.ViewProfileServlet", urlPatterns = "/profile")
 public class ViewProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getSession().setAttribute("profile", true);
         if (request.getSession().getAttribute("user") == null) {
+            request.getSession().setAttribute("profile", true);
+            request.getSession().setAttribute("createAds", false);
             response.sendRedirect("/login");
             return;
         }

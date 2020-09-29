@@ -14,8 +14,13 @@ import java.io.IOException;
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         if (request.getSession().getAttribute("user") != null) {
-            response.sendRedirect("/profile");
+            if ((boolean) request.getSession().getAttribute("profile")) {
+                response.sendRedirect("/profile");
+            } else if ((boolean) request.getSession().getAttribute("createAds")) {
+                response.sendRedirect("/ads/create");
+            }
             return;
         }
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
@@ -34,12 +39,12 @@ public class LoginServlet extends HttpServlet {
         boolean validAttempt = Password.check(password, user.getPassword());
 
         if (validAttempt) {
-            if ((boolean)request.getSession().getAttribute("profile")) {
-                request.getSession().setAttribute("user", user);
-                response.sendRedirect("/profile");
-            } else if ((boolean)request.getSession().getAttribute("createAds")) {
+            if ((boolean) request.getSession().getAttribute("createAds")) {
                 request.getSession().setAttribute("user", user);
                 response.sendRedirect("/ads/create");
+            } else if ((boolean) request.getSession().getAttribute("profile")) {
+                request.getSession().setAttribute("user", user);
+                response.sendRedirect("/profile");
             }
         } else {
             response.sendRedirect("/login");

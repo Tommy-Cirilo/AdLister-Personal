@@ -48,6 +48,7 @@ public class MySQLUsersDao extends MySQLDao implements Users {
             rs.next();
             return rs.getLong(1);
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new RuntimeException("Error creating new user", e);
         }
     }
