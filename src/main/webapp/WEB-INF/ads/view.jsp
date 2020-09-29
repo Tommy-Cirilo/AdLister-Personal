@@ -31,6 +31,9 @@
         <div class="card">
             <h2>Item Description</h2>
                 <div class="card-body">
+                    ${catagory}
+                </div>
+                <div class="card-body">
                     ${title}
                 </div>
                 <div class="card-body">
