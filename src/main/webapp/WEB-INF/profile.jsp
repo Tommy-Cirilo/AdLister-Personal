@@ -4,15 +4,41 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Your Profile" />
+        <jsp:param name="title" value="Your Profile"/>
     </jsp:include>
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
-    <div class="container">
-        <h1>Welcome, ${sessionScope.user.username}!</h1>
-    </div>
+<div class="container">
+    <h1>Welcome, ${sessionScope.user.username}!</h1>
+    <br>
+    <h3>Here is some of your most recent ad activity</h3>
+</div>
+
+<c:if test="${not empty userAds} ">
+    <c:forEach var="ad" items="${ads}">
+        <div class="card">
+            <h2>Seller Information</h2>
+            <div class="card-body">
+                <p>Date Posted: ${date}</p>
+            </div>
+        </div>
+        <%--AD DISPLAY--%>
+        <div class="card">
+            <h2>Item Description</h2>
+            <div class="card-body">
+                    ${title}
+            </div>
+            <div class="card-body">
+                    ${description}
+            </div>
+        </div>
+    </c:forEach>
+</c:if>
+<%--USER DISPLAY--%>
+
+
 
 </body>
 </html>
