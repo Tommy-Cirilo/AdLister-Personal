@@ -10,8 +10,8 @@
         /*CSS STYLE*/
         </style>
     </head>
-    <body>
 
+    <body>
     <%--NAVBAR LINK--%>
     <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
