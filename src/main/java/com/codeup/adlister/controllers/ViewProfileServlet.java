@@ -31,7 +31,6 @@ public class ViewProfileServlet extends HttpServlet {
             if (ad.getUserId() == user.getId()) {
                 bucket.add(ad);
             }
-
         }
         request.getSession().setAttribute("userAds",bucket);
 

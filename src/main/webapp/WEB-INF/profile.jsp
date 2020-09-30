@@ -16,28 +16,28 @@
     <h3>Here is some of your most recent ad activity</h3>
 </div>
 
-<c:if test="${not empty userAds} ">
-    <c:forEach var="userAds" items="${ad}">
+<%--<c:if test="${not empty userAds} ">--%>
+    <c:forEach var="ad" items="${sessionScope.userAds}">
 
 <%--USER DISPLAY--%>
         <div class="card">
             <h2>Seller Information</h2>
             <div class="card-body">
-                <p>Date Posted: ${date}</p>
+                <p>Date Posted: ${ad.date}</p>
             </div>
         </div>
         <%--AD DISPLAY--%>
         <div class="card">
             <h2>Item Description</h2>
             <div class="card-body">
-                    ${title}
+                    ${ad.title}
             </div>
             <div class="card-body">
-                    ${description}
+                    ${ad.description}
             </div>
         </div>
     </c:forEach>
-</c:if>
+<%--</c:if>--%>
 
 
 
