@@ -11,38 +11,45 @@
 
 
         <style>
-        /*CSS STYLE*/
+            #body{
+                text-align: center;
+                background-color: lightgray;
+            }
+            #main_header{
+                text-align: center;
+                color: blue;
+            }
         </style>
     </head>
 
-    <body>
+    <body id="body">
     <%--NAVBAR LINK--%>
     <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
     <%--MAIN CONTAINER--%>
     <div class="container-fluid">
-        <h1>MAIN HEADER</h1>
-        <p>${ads}</p>
-        <%--USER DISPLAY--%>
-        <div class="card">
-            <h2>Seller Information</h2>
-                <div class="card-body">
-                    ${username}
-                </div>
-        </div>
+        <h1 id="main_header">AD INFORMATION</h1>
+            <p>${ads}</p>
+            <%--USER DISPLAY--%>
+            <div>
+                <h2>User Information</h2>
+                    <div>
+                        ${User}
+                    </div>
+            </div>
 
-        <%--AD DISPLAY--%>
-        <div class="card">
-            <h2>Item Description</h2>
-                <div class="card-body">
-                    ${catagory}
-                </div>
-                <div class="card-body">
-                    ${title}
-                </div>
-                <div class="card-body">
-                    ${description}
-                </div>
-        </div>
+            <%--AD DISPLAY--%>
+            <div class="card">
+                <h2>Item Description</h2>
+                    <div>
+                        ${catagory}
+                    </div>
+                    <div>
+                        ${title}
+                    </div>
+                    <div>
+                        ${description}
+                    </div>
+            </div>
     </body>
 </html>

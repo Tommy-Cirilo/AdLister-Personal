@@ -19,11 +19,6 @@
                     <li><a href="/register">Register</a></li>
                 </c:otherwise>
             </c:choose>
-
-
-
-
-
         </ul>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

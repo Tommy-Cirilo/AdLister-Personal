@@ -46,41 +46,54 @@
                 cursor: pointer;
             }
 
-            .ad-card {
-                border: black 1px;
+            #body{
+                background-color: lightgray;
+            }
+            #main_header{
+                text-align: center;
+                color: blue;
+            }
+            #ad_card{
+                flex-wrap: wrap;
+                margin: 2.5%;
+                width: 20%;
+                text-align: center;
+                text-justify: auto;
+                align-content: center;
+                background-color: lightblue;
+                border: 5px black;
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+                border-radius: 5px 5px 5px 5px;
             }
         </style>
     </head>
-    <body>
+    <body id="body">
     <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
-
         <div class="container-fluid">
-            <h1>Here Are all the ads!</h1>
-
+            <h1 id="main_header">Here Are all the ads!</h1>
             <c:forEach var="ad" items="${ads}">
-                <div class="col-md-6">
-                    <h2>${ad.title}</h2>
-                    <p>${ad.description}</p>
-        <%--            <!-- Trigger/Open The Modal -->--%>
-        <%--            <button id="myBtn">Edit Ad</button>--%>
-
-                    <a id="ad-card" href="/ads/view?adId=${ad.id}">Ad Info</a>
-
-                        <%--            <!-- The Modal -->--%>
-        <%--            <div id="myModal" class="modal">--%>
-
-        <%--                <!-- Modal content -->--%>
-        <%--                <div class="modal-content">--%>
-        <%--                    <span class="close">&times;</span>--%>
-        <%--                    <h2>${ad.title}</h2>--%>
-        <%--                    <p>${ad.description}</p>--%>
-        <%--                </div>--%>
-
-        <%--            </div>--%>
+                <div id="ad_card" class="col-md-3">
+                    <div class="card-fluid">
+                        <h2>${ad.title}</h2>
+                        <p>${ad.description}</p>
+                        <a id="ad-card" href="/ads/view?adId=${ad.id}">Ad Info</a>
+                    </div>
                 </div>
             </c:forEach>
-        </div
+        </div>
+    <%--            <!-- Trigger/Open The Modal -->--%>
+    <%--            <button id="myBtn">Edit Ad</button>--%>
+    <%--            <!-- The Modal -->--%>
+    <%--            <div id="myModal" class="modal">--%>
 
+    <%--                <!-- Modal content -->--%>
+    <%--                <div class="modal-content">--%>
+    <%--                    <span class="close">&times;</span>--%>
+    <%--                    <h2>${ad.title}</h2>--%>
+    <%--                    <p>${ad.description}</p>--%>
+    <%--                </div>--%>
+
+    <%--            </div>--%>
     </body>
     <script type="text/javascript">
         document.getElementById("ad-card").onclick = function () {

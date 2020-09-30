@@ -12,9 +12,7 @@ import java.io.IOException;
 @WebServlet(name = "controllers.ViewAdServlet", urlPatterns = "/ads/view")
 public class ViewAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        request.setAttribute("ads", DaoFactory.getAdsDao().all());
         long adId = Long.parseLong(request.getParameter("adId"));
-//        request.getSession().setAttribute("ad", DaoFactory.getAdsDao().);
         request.setAttribute("ads", adId);
         request.getRequestDispatcher("/WEB-INF/ads/view.jsp").forward(request, response);
     }
