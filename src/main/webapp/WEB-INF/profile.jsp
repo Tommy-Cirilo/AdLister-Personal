@@ -17,7 +17,9 @@
 </div>
 
 <c:if test="${not empty userAds} ">
-    <c:forEach var="ad" items="${ads}">
+    <c:forEach var="userAds" items="${ad}">
+
+<%--USER DISPLAY--%>
         <div class="card">
             <h2>Seller Information</h2>
             <div class="card-body">
@@ -36,7 +38,6 @@
         </div>
     </c:forEach>
 </c:if>
-<%--USER DISPLAY--%>
 
 
 
