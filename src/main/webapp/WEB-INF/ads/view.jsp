@@ -34,7 +34,7 @@
             <div>
                 <h2>User Information</h2>
                     <div>
-                        ${User}
+                        <P>${user/username}</P>
                     </div>
             </div>
 
@@ -42,13 +42,10 @@
             <div class="card">
                 <h2>Item Description</h2>
                     <div>
-                        ${catagory}
+                        <p>${ads_catagories/ad_id}</p>
                     </div>
                     <div>
-                        ${title}
-                    </div>
-                    <div>
-                        ${description}
+                        <p>${catagoies/name}</p>
                     </div>
             </div>
     </body>
