@@ -1,11 +1,15 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
     <head>
         <title>Show Ad Page</title>
+
         <jsp:include page="/WEB-INF/partials/head.jsp">
-            <jsp:param name="title" value="Ad show page" />
+            <jsp:param name="title" value="Viewing All The Ads" />
         </jsp:include>
+
+
         <style>
         /*CSS STYLE*/
         </style>
@@ -16,9 +20,9 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
     <%--MAIN CONTAINER--%>
-    <div class="container">
+    <div class="container-fluid">
         <h1>MAIN HEADER</h1>
-
+        <p>${ads}</p>
         <%--USER DISPLAY--%>
         <div class="card">
             <h2>Seller Information</h2>

@@ -24,6 +24,7 @@ public class MySQLAdsDao extends MySQLDao implements Ads {
         }
     }
 
+
     @Override
     public Long insert(Ad ad) {
         try {
