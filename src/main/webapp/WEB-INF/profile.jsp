@@ -28,11 +28,13 @@
         </div>
         <%--AD DISPLAY--%>
         <div class="card">
-            <h2>Item Description</h2>
+            <h4>Title: </h4>
             <div class="card-body">
+
                     ${ad.title}
             </div>
             <div class="card-body">
+                <h4>Description: </h4>
                     ${ad.description}
             </div>
         </div>
