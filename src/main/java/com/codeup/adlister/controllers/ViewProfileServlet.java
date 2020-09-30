@@ -15,8 +15,7 @@ import java.io.IOException;
 public class ViewProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getSession().getAttribute("user") == null) {
-            request.getSession().setAttribute("profile", true);
-            request.getSession().setAttribute("createAds", false);
+            request.getSession().setAttribute("redirect", "/profile");
             response.sendRedirect("/login");
             return;
         }

@@ -10,7 +10,7 @@
 <%--            This is the JSTL that states if the user is logged in, show login and register--%>
 <%--            Otherwise Create an ad and Logout will show in navbar--%>
             <c:choose>
-                <c:when test="${users.id}">
+                <c:when test="${not empty user}">
                     <li><a href="/ads/create">Create an Ad</a></li>
                     <li><a href="/logout">Logout</a></li>
                 </c:when>
