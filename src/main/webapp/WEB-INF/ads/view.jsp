@@ -29,12 +29,12 @@
     <%--MAIN CONTAINER--%>
     <div class="container-fluid">
         <h1 id="main_header">AD INFORMATION</h1>
-            <p>${ads}</p>
+<%--            <p>${ads}</p>--%>
             <%--USER DISPLAY--%>
             <div>
                 <h2>User Information</h2>
                     <div>
-                        <P>${user/username}</P>
+                        <P>{users.username}</P>
                     </div>
             </div>
 
@@ -42,10 +42,10 @@
             <div class="card">
                 <h2>Item Description</h2>
                     <div>
-                        <p>${ads_catagories/ad_id}</p>
+                        <p>${ad.title}</p>
                     </div>
                     <div>
-                        <p>${catagoies/name}</p>
+                        <p>${ad.description}</p>
                     </div>
             </div>
     </body>

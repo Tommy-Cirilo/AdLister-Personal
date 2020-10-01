@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.mysql.cj.api.mysqla.result.Resultset;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -23,19 +24,19 @@ public class MySQLAdsDao extends MySQLDao implements Ads {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
     }
+    @Override
+    public List<Ad> getAdById(long adId) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads WHERE id = ? LIMIT 1");
+            stmt.setLong(1,adId);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch(SQLException e) {
+            throw new RuntimeException("Error getting ad by Id", e);
+        }
+    }
 
-//    @Override
-//    public List<Ad> adid() {
-//        String query = "SELECT * FROM ads WHERE adid = ? LIMIT 1";
-//        try {
-//            PreparedStatement stmt = connection.prepareStatement(query);
-//            stmt.setString(1, adid);
-//            ResultSet rs = stmt.executeQuery();
-//            return (adid) createAdsFromResults(rs);
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Error finding an ad by ad ID", e);
-//        }
-//    }
 
     @Override
     public Long insert(Ad ad) {
