@@ -1,3 +1,4 @@
+/*
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
@@ -56,3 +57,4 @@ public class ListAdsDao implements Ads {
         return ads;
     }
 }
+*/
