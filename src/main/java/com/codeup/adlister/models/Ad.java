@@ -17,11 +17,10 @@ public class Ad {
         this.date = date;
     }
 
-    public Ad(long userId, String title, String description, Date date) {
+    public Ad(long userId, String title, String description) {
         this.userId = userId;
         this.title = title;
         this.description = description;
-        this.date = date;
     }
 
     public long getId() {
