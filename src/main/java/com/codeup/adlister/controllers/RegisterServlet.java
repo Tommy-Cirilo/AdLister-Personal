@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
@@ -32,12 +33,15 @@ public class RegisterServlet extends HttpServlet {
         boolean validInput = Validate.checkForErrors(errorList);
 
         if (!validInput) {
-            if(errorList.get("nameNotEmpty") && !errorList.get("nameAvailable"))
-                request.getSession().setAttribute("username",username);
-            else
+            ArrayList<String> errorMessages = Validate.getErrorMessages(errorList);
+            // Display error messages in jsp partial
+
+            request.getSession().setAttribute("username",username);
+            request.getSession().setAttribute("email",email);
+            if(!errorList.get("nameAvailable"))
                 request.getSession().removeAttribute("username");
             if(!errorList.get("emailAvailable"))
-                request.getSession().setAttribute("email",email);
+                request.getSession().removeAttribute("email");
             response.sendRedirect("/register");
             return;
         }

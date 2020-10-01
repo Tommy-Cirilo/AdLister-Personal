@@ -1,30 +1,58 @@
 package com.codeup.adlister.util;
 
 import com.codeup.adlister.dao.DaoFactory;
-import com.codeup.adlister.models.InputError;
 import com.codeup.adlister.models.User;
 
 import java.util.*;
 
 public class Validate {
-
     public static HashMap<String, Boolean> getErrorList(String name, String email, String password, String checkPassword) {
         HashMap<String, Boolean> errorList = new HashMap<>();
         errorList.put("nameNotEmpty", !name.isEmpty());
-        System.out.println(errorList.get("nameNotEmpty"));
         errorList.put("nameAvailable", username(name.toLowerCase()));
-        System.out.println(errorList.get("nameAvailable"));
         errorList.put("emailNotEmpty", !email.isEmpty());
-        System.out.println(errorList.get("emailNotEmpty"));
         errorList.put("emailAvailable", email(email.toLowerCase()));
-        System.out.println(errorList.get("emailAvailable"));
         errorList.put("passwordNotEmpty", !password.isEmpty());
-        System.out.println(errorList.get("passwordNotEmpty"));
         errorList.put("checkPasswordNotEmpty", !checkPassword.isEmpty());
-        System.out.println(errorList.get("checkPasswordNotEmpty"));
         errorList.put("checkPasswordEquals", (errorList.get("passwordNotEmpty") && errorList.get("checkPasswordNotEmpty")) && password.equals(checkPassword));
-        System.out.println(errorList.get("checkPasswordEquals"));
         return errorList;
+    }
+
+    public static HashMap<String, Boolean> getErrorList(String title, String description) {
+        HashMap<String, Boolean> errorList = new HashMap<>();
+        errorList.put("titleNotEmpty", !title.isEmpty());
+        errorList.put("descriptionNotEmpty", !description.isEmpty());
+        return errorList;
+    }
+
+    public static ArrayList<String> getErrorMessages(HashMap<String, Boolean> errorList) {
+        ArrayList<String> errorMessages = new ArrayList<>();
+        if(!errorList.get("nameNotEmpty")) {
+            errorMessages.add("Please input a username");
+        } else {
+            if(!errorList.get("nameAvailable"))
+                errorMessages.add("Username is not available");
+        }
+
+        if(!errorList.get("emailNotEmpty")) {
+            errorMessages.add("Please input an email");
+        } else {
+            if(!errorList.get("emailAvailable"))
+                errorMessages.add("Email is already in use");
+        }
+
+        if(!errorList.get("passwordNotEmpty")) {
+            errorMessages.add("Please input a password");
+        } else {
+            if(!errorList.get("checkPasswordNotEmpty")) {
+                errorMessages.add("Please input your password into the password confirmation");
+            } else {
+                if(!errorList.get("checkPasswordEquals"))
+                    errorMessages.add("Passwords do not match");
+            }
+        }
+
+        return errorMessages;
     }
 
     public static boolean checkForErrors(HashMap<String, Boolean> errorList) {
@@ -33,8 +61,6 @@ public class Validate {
             Map.Entry entry = stringBooleanEntry;
             total *= (boolean) entry.getValue() ? 1 : 0;
         }
-//        boolean tf = total == 1;
-//        System.out.println("OVERALL: " + tf);
         return total == 1;
     }
 
