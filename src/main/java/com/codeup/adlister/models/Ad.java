@@ -1,6 +1,7 @@
 package com.codeup.adlister.models;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class Ad {
     private long id;
@@ -8,6 +9,7 @@ public class Ad {
     private String title;
     private String description;
     private Date date;
+    private ArrayList<Category> categories;
 
     public Ad(long id, long userId, String title, String description, Date date) {
         this.id = id;
@@ -17,10 +19,11 @@ public class Ad {
         this.date = date;
     }
 
-    public Ad(long userId, String title, String description) {
+    public Ad(long userId, String title, String description, ArrayList<Category> categories) {
         this.userId = userId;
         this.title = title;
         this.description = description;
+        this.categories = categories;
     }
 
     public long getId() {
@@ -60,5 +63,13 @@ public class Ad {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public ArrayList<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(ArrayList<Category> categories) {
+        this.categories = categories;
     }
 }
