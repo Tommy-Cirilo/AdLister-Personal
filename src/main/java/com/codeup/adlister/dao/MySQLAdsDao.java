@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.mysql.cj.api.mysqla.result.Resultset;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -23,6 +24,19 @@ public class MySQLAdsDao extends MySQLDao implements Ads {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
     }
+    @Override
+    public List<Ad> getAdById(long adId) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads WHERE id = ? LIMIT 1");
+            stmt.setLong(1,adId);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch(SQLException e) {
+            throw new RuntimeException("Error getting ad by Id", e);
+        }
+    }
+
 
     @Override
     public Long insert(Ad ad) {
@@ -43,10 +57,11 @@ public class MySQLAdsDao extends MySQLDao implements Ads {
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
-            rs.getString("title"),
-            rs.getString("description")
+                rs.getLong("id"),
+                rs.getLong("user_id"),
+                rs.getString("title"),
+                rs.getString("description"),
+                rs.getDate("date")
         );
     }
 

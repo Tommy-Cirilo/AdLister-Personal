@@ -1,22 +1,35 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <jsp:include page="partials/head.jsp">
         <jsp:param name="title" value="Register For Our Site!" />
     </jsp:include>
+    <style>
+        #body{
+            background-color: lightgray;
+        }
+        #main_header{
+            text-align: center;
+            color: blue;
+        }
+    </style>
 </head>
-<body>
+<body id="body">
     <jsp:include page="partials/navbar.jsp" />
     <div class="container">
         <h1>Please fill in your information.</h1>
+        <jsp:include page="partials/messages.jsp" />
+    <div class="container-fluid">
+        <h1 id="main_header">Please fill in your information.</h1>
         <form action="/register" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
-                <input id="username" name="username" class="form-control" type="text">
+                <input id="username" name="username" class="form-control" type="text" value="${not empty username ? username : ""}">
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input id="email" name="email" class="form-control" type="email">
+                <input id="email" name="email" class="form-control" type="email" value="${not empty email ? email : ""}">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
